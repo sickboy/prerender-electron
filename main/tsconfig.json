@@ -1,0 +1,33 @@
+{
+    "version": "1.6",
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": false,
+        "noLib": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "experimentalAsyncFunctions": true,
+        "sourceMap": true
+    },
+    "filesGlob": [
+        "**/*.ts",
+        "typings/**/*.d.ts",
+        "../typings/**/*.d.ts"
+    ],
+    "files": [
+        "app.ts",
+        "main.ts",
+        "typings/github-electron/github-electron-main.d.ts",
+        "../typings/es6.d.ts",
+        "../typings/github-electron/electron-prebuilt.d.ts",
+        "../typings/github-electron/github-electron.d.ts",
+        "../typings/node/node.d.ts"
+    ],
+    "exclude": [],
+    "atom": {
+        "rewriteTsconfig": true
+    }
+}

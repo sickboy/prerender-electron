@@ -1,0 +1,35 @@
+{
+    "version": "1.6",
+    "atom": {
+        "rewriteTsconfig": true
+    },
+    "compilerOptions": {
+        "target": "es6",
+        "module": "es6",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": false,
+        "noLib": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "experimentalAsyncFunctions": true,
+        "sourceMap": true
+    },
+    "filesGlob": [
+        "**/*.ts",
+        "jspm_packages/**/*.d.ts",
+        "!jspm_packages/npm/rx@*/**",
+        "jspm_packages/npm/rx@*/ts/rx.all.es6.d.ts",
+        "typings/**/*.d.ts",
+        "../typings/**/*.d.ts"
+    ],
+    "files": [
+        "api.ts",
+        "typings/github-electron/github-electron-renderer.d.ts",
+        "../typings/es6.d.ts",
+        "../typings/github-electron/electron-prebuilt.d.ts",
+        "../typings/github-electron/github-electron.d.ts",
+        "../typings/node/node.d.ts"
+    ],
+    "exclude": []
+}

@@ -1,0 +1,16 @@
+build/dist/
+node_modules/
+*.exe
+
+/main/**/*.js
+/main/**/*.js.map
+
+/public/**/*.css
+/public/**/*.css.map
+/public/**/*.js
+/public/**/*.js.map
+/public/dist/
+/public/jspm_packages/
+
+!/public/config.js
+!/public/cfg.js
