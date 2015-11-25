@@ -8,13 +8,19 @@ port = process.env.port || 4000;
 var outPath = "renders/";
 
 app.use((req, res, next) => {
-  if (!req.path.startsWith("/http")) {
+  var url = req.originalUrl; // not compatible when mounting on sub folder (or at least then need to keep that into account)
+  if (!url.startsWith("/http")) {
     res.sendStatus(404);
     return;
   }
   var outFile = outPath + 'out.html';
   var outFileDetails = outFile + '.details.json';
-  var r = cp.spawnSync('node_modules\\.bin\\electron.cmd', ['main\\main.js', req.path.substring(1), outFile]);
+  var theUrl = url.substring(1);
+  if (theUrl.includes("_escaped_fragment_=")) {
+    res.status(400).send("Renderer should not get escaped fragment");
+    return;
+  }
+  var r = cp.spawnSync('node_modules\\.bin\\electron.cmd', ['main\\main.js', theUrl, outFile]);
   console.log("result: ", r.status, r.stdout, r.stderr);
   var document = fs.readFileSync(outFile, {encoding: 'utf-8'});
   fs.unlink(outFile);
