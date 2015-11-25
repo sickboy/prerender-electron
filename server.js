@@ -24,7 +24,7 @@ app.use((req, res, next) => {
     console.log("details: ", details);
     // TODO: use details ??
     if (details.httpResponseCode != 200) {
-      res.send(details.httpResponseCode, document);
+      res.status(details.httpResponseCode).send(document);
       return;
     }
   }
