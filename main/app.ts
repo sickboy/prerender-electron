@@ -68,8 +68,8 @@ ipc.on('prerender:document', (evt, document: string) => {
 
 appReady.then(x => {
   mainWindow = new BrowserWindow({
-    width: 1024,
-    height: 768,
+    width: 1280,
+    height: 720,
     show: false,
     //frame: false,
     "web-preferences": {
