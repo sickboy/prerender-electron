@@ -101,6 +101,7 @@ appReady.then(x => {
       state.timedOut = true;
       if (config.debug) console.log("timed out");
       state.details = {httpResponseCode: 504};
+      state.document = "Gateway timeout";
       state.write();
     } finally {
       mainWindow.close();
