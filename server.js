@@ -17,8 +17,11 @@ cluster(function(worker) {
     var outFileDetails = outFile + '.details.json';
     var theUrl = url.substring(1);
     if (theUrl.includes("_escaped_fragment_=")) {
-      res.status(400).send("Renderer should not get escaped fragment");
-      return;
+      theUrl = theUrl.replace("_escaped_fragment_=&", "");
+      theUrl = theUrl.replace("?_escaped_fragment_=", "");
+      theUrl = theUrl.replace("&_escaped_fragment_=", "");
+      //res.status(400).send("Renderer should not get escaped fragment");
+      //return;
     }
     var r = cp.spawnSync('node_modules\\.bin\\electron.cmd', ['main\\main.js', theUrl, outFile]);
     console.log("result: ", r.status, r.stdout, r.stderr);
