@@ -19,8 +19,8 @@ var config = {
 }
 
 var shift = 1; // when running from cli electron needs shift
-var url = process.argv[1+shift];
-var outFile = process.argv[2+shift];
+var outFile = process.argv[1+shift];
+var url = process.argv[2+shift];
 if (config.debug) console.log("In", url, "Out", outFile);
 if (!url) {
   console.error("no valid url specified");
