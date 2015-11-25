@@ -24,7 +24,7 @@ cluster(function(worker) {
         //res.status(400).send("Renderer should not get escaped fragment");
         //return;
       }
-      var r = cp.spawnSync('node_modules\\.bin\\electron.cmd', ['main\\main.js', outFile, encodeURI(theUrl)]);
+      var r = cp.spawnSync('node_modules\\.bin\\electron.cmd', ['main\\main.js', outFile, encodeURIComponent(theUrl)]);
       console.log("result: ", r.status, r.stdout, r.stderr);
       var document = fs.readFileSync(outFile, {encoding: 'utf-8'});
       fs.unlink(outFile);

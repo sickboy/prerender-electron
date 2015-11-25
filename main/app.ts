@@ -31,7 +31,7 @@ if (!outFile) {
   process.exit(1);
 }
 
-url = decodeURI(url);
+url = decodeURIComponent(url);
 
 var appReady = new Promise((resolve, reject) => app.on('ready', () => resolve()));
 
