@@ -31,6 +31,8 @@ if (!outFile) {
   process.exit(1);
 }
 
+url = decodeURI(url);
+
 var appReady = new Promise((resolve, reject) => app.on('ready', () => resolve()));
 
 // Keep a global reference of the window object, if you don't, the window will
