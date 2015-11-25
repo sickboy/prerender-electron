@@ -22,6 +22,14 @@ var shift = 1; // when running from cli electron needs shift
 var url = process.argv[1+shift];
 var outFile = process.argv[2+shift];
 if (config.debug) console.log("In", url, "Out", outFile);
+if (!url) {
+  console.error("no valid url specified");
+  process.exit(1);
+}
+if (!outFile) {
+  console.error("no valid outFile specified");
+  process.exit(1);
+}
 
 var appReady = new Promise((resolve, reject) => app.on('ready', () => resolve()));
 
