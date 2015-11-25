@@ -2,6 +2,9 @@ build/dist/
 node_modules/
 *.exe
 
+/renders/
+!/renders/EMPTY
+
 /main/**/*.js
 /main/**/*.js.map
 
