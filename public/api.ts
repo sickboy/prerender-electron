@@ -12,6 +12,9 @@ function stripScripts(s) {
  return div.innerHTML;
 }
 
+// TODO: support
+// prerender-status-code and prerender-header
+
 g.api = {
   "dumpHtml": (html: string) => {
     ipc.send('prerender:document', stripScripts(html));

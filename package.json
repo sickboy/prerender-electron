@@ -35,8 +35,10 @@
   "dependencies": {
     "Squirrel": "0.0.1",
     "electron-edge": "^4.0.1-pre1",
+    "express": "^4.13.3",
     "jquery": "^2.1.4",
     "ps-node": "0.0.5",
-    "psnode": "0.0.1"
+    "psnode": "0.0.1",
+    "temp": "^0.8.3"
   }
 }
