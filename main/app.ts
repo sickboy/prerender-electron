@@ -131,8 +131,13 @@ appReady.then(x => {
   mainWindow.webContents.executeJavaScript(`
     var i = setInterval(() => {
       if (window.prerenderReady) {
-        window.api.dumpHtml(document.documentElement.innerHTML);
         clearInterval(i);
+        try {
+          window.api.dumpHtml(document.documentElement.innerHTML);
+        } catch (err) {
+          console.error(err);
+          // TODO: signal error state so it doesnt wait for timeout..
+        }
       }
     }, 100);
   `);
