@@ -44,7 +44,7 @@ class State {
   timedOut: boolean;
   processing: boolean;
   document: string;
-  details: {};
+  details: {httpResponseCode?: string, headers?: {}};
 
   constructor(public url: string, public outFile: string) {
     this.outFileHeaders = outFile + ".details.json";
@@ -65,11 +65,21 @@ class State {
 }
 
 var state = new State(url, outFile);
-ipc.on('prerender:document', (evt, document: string) => {
+ipc.on('prerender:document', (evt, document: string, details?) => {
   if (state.timedOut) return;
   try {
     state.processing = true;
     state.document = document;
+    if (details) {
+      if (!state.details) state.details = {}
+      if (details.httpResponseCode) state.details.httpResponseCode = details.httpResponseCode;
+      if (details.headers) {
+        details.headers.forEach((x: string) => {
+          let split = x.split(": ")
+          state.details[split[0]] = split.slice(1).join(": ");
+        })
+      }
+    }
     state.write();
   } finally {
     mainWindow.close();
@@ -110,7 +120,7 @@ appReady.then(x => {
     try {
       state.timedOut = true;
       if (config.debug) console.log("timed out");
-      state.details = {httpResponseCode: 504};
+      state.details = {httpResponseCode: "504"};
       state.document = "Gateway timeout";
       state.write();
     } finally {
